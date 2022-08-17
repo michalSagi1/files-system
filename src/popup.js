@@ -1,28 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
+// import { AiFillFolderAdd } from 'react-icons/ai'
+import PathContext from './PathContext';
+import iconFolder from './icons/addFolder.png'
+
 const axios = require('axios').default;
 
 
-function Popup() {
+
+function Popup({ setChange }) {
 
     const [show, setShow] = useState(false);
     const [message, setMessage] = useState(false);
     const [nameFolder, setNameFolder] = useState("")
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const { path } = useContext(PathContext);
+
 
     const creatrNewFolder = async () => {
         axios({
             method: "post",
             url: `http://localhost:3000/folder/creatfolder/${nameFolder}`,
             headers: { "Content-Type": "application/json" },
-            data: { type: "folder", dir: "/test" }
+            data: { path, type: "folder" }
 
         })
             .then((e) => {
                 console.log("success", e); handleClose()
+                setChange(nameFolder)
+
             })
             .catch((e) => {
                 console.log(e);
@@ -51,9 +60,13 @@ function Popup() {
 
     return (
         <>
-            <Button variant="primary" onClick={handleShow}>
-                New Folder
-            </Button>
+            {/* <Button variant="primary" onClick={handleShow}>
+                <AiFillFolderAdd />    New Folder
+            </Button> */}
+            <div className="addFolder" onClick={handleShow}>
+                <img src={iconFolder} alt={iconFolder} className="addFolder" />
+            </div>
+
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

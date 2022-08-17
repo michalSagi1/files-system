@@ -1,0 +1,136 @@
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    margin: 2%;
+    margin-left: 10%;
+
+}
+.containerFiles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.files{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 260px;
+    height: 130px;
+    margin: 10px;
+    padding: 7px;
+    justify-content: center;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.containerFolders{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.folders{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 208px;
+    height: 190px;
+    margin: 10px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.fileCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.fileName{
+    font-size: 20px;
+    margin-bottom: 18px;
+}
+
+.icons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.download{
+  cursor: pointer;
+  height: 30px;
+  /* margin-right: 15px; */
+}
+.delete{
+    cursor: pointer;
+    height: 30px;
+    margin-right: 15px;
+  }
+  .edit{
+    cursor: pointer;
+    height: 30px;
+    margin-left: 15px;
+  }
+  .iconFolder{
+    height: 60px;
+    object-fit: contain;
+  }
+  .gotofolder{
+    cursor: pointer;
+    /* margin-top: 15px; */
+    /* margin-bottom: 4px; */
+  }
+  .iconsFolders{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;}
+    
+    .creatFolder{
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        width: 120px;
+        height: 120px;
+        margin: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        border-radius: 50%;
+    }
+    
+    .addFolder{
+        height: 120px;
+    cursor: pointer;    }
+    .addfolder{
+        width: 208px;
+        height: 190px;
+        margin: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .creatFile{
+        /* box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%); */
+    /* transition: 0.3s; */
+    width: 200px;
+    /* height: 130px; */
+    /* margin: 10px; */
+    /* justify-content: center;
+    display: flex;
+    flex-direction: column; */
+    }
+      .addfile{
+        width: 260px;
+        /* height: 190px; */
+        margin: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }

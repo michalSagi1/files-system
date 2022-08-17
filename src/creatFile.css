@@ -1,0 +1,53 @@
+input {
+    display: none;
+  }
+label{
+cursor: pointer;
+color: blue;
+  }
+ .addFile{
+height: 120px;
+box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+border-radius: 50%;
+  }
+
+  .btnadd{
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;}
+
+    .upload{
+        height: 40px;
+    }
+    .form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex-direction: row-reverse;
+    }
+    .add{
+        display: flex;
+    }
+    .up{
+        display: flex;
+        flex-direction: column;
+        margin-top: 12px;
+    }
+    .information{
+        /* height: 130px; */
+        height: auto;
+        width: 150px;
+        font-size: x-small;
+        margin-right: 30px;
+                box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+    }

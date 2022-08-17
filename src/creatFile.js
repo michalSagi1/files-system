@@ -54,46 +54,71 @@
 
 // export default CreatFile;
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import Button from 'react-bootstrap/Button';
+import { AiFillFileAdd } from 'react-icons/ai'
+import PathContext from './PathContext';
+import './creatFile.css'
+import iconFile from './icons/addFile.png'
+import iconFileUp from './icons/upload.png'
+
+
+
 const axios = require('axios').default;
 
 
 
-function Form() {
+function Form({ setChange }) {
 
   const [file, setFile] = useState({ fileName: "", size: "", type: "" });
+  const { path } = useContext(PathContext);
+  const [getFile, setGetFile] = useState(false)
 
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     let bodyFormData = new FormData();
 
     bodyFormData.append('fileName', e.target.fileInput.files[0]);
-    // console.dir(e.target.fileInput)
+    console.dir(e.target.fileInput.files[0])
 
     axios({
-      method: "post",
-      url: "http://localhost:3000/file/root/",
-      data: {
+      method: "POST",
+      url: `http://localhost:3000/file/root/?path=${path}`,
+      data:
         bodyFormData,
-        name: file.fileName,
-        size: file.size,
-        type: file.type,
-        dir: "/test"
-      },
+      // name: file.fileName,
+      // size: file.size,
+      // type: file.type,
+      // dir: "/test"
+
 
       headers: { "Content-Type": "multipart/form-data" },
 
     })
-      .then((e) => {
-        console.log("success", e);
+      .then(function (response) {
+        //handle success
+        console.log("success", response);
+        setChange(file.fileName)
+
       })
-      .catch((e) => {
-        console.log(e);
+      .catch(function (response) {
+        //handle error
+        console.log(response);
       });
+    setGetFile(false)
+
   }
+
+
+  //     .then((e) => {
+  //       console.log("success", e);
+  //     })
+  //     .catch((e) => {
+  //       console.log(e);
+  //     });
+  // }
 
 
 
@@ -109,19 +134,39 @@ function Form() {
         type: e.target.files[0].type
       }
     });
+    setGetFile(true)
   }
 
   return (
     <div className="form">
       <form onSubmit={onSubmit}>
-        <input name="fileInput" type="file" onChange={onChangeHandler}>
-        </input>
-        <button><Button variant="primary" >New File </Button></button>
-        <h3>File Name: {file.fileName} </h3>
-        <h3> File Size: {file.size} </h3>
-        <h3> File Type: {file.type}</h3>
+        <div className='add'>
+          <label for="fileInput">
+            <img src={iconFile} alt={iconFile} className="addFile" />
+            <input id="fileInput" type="file" onChange={onChangeHandler} />
+          </label>
+        </div>
+        {getFile &&
+          <div className='up'>
+
+            <button className='btnadd'>
+              <img src={iconFileUp} alt={iconFileUp} className="upload" />
+            </button>
+          </div>
+        }
+
       </form>
+      {getFile &&
+        <div className='information'>
+          <b>File Name:</b> {file.fileName}<br />
+          <b>File Size:</b> {file.size}<br />
+          <b>File Type:</b> {file.type}
+        </div>
+      }
+
     </div>
+
+
   )
 }
 
