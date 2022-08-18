@@ -1,36 +1,32 @@
-import React from 'react';
+import React, { useContext } from "react";
 import './Header.css';
-// import logo from '../../assets/images/bookLogo.png'
-// import threeLines from '../../assets/images/threeLines.png'
 import iconFolder from './icons/folder.png'
+import iconHeart from './icons/heart.png'
+import PathContext from "./PathContext";
 
-// import { useNavigate } from 'react-router-dom';
+
 
 
 const Header = () => {
-
-  // const navigate = useNavigate();
-
-  // const navLogin = () => {
-  //   navigate('/')
-  // }
+  const { setPath } = useContext(PathContext);
 
   return (
     <div className='headerContainer'>
       <div className='headerInnerWidth'>
         <div className='workshopHeader'>
           <img
-            // onClick={navLogin}
+            onClick={() => setPath(`root`)}
             src={iconFolder}
             alt=""
             className='headerLogo'
           />
-          <div className='bookify'>Drive</div>
+          <div onClick={() => setPath(`root`)}
+            className='titleHeader'>Drive</div>
         </div>
         <img
-          src={iconFolder}
-          alt="threeLines"
-          className='threeLines'
+          src={iconHeart}
+          alt="iconHeart"
+          className='iconHeart'
         />
       </div>
     </div>

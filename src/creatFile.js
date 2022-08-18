@@ -112,15 +112,6 @@ function Form({ setChange }) {
   }
 
 
-  //     .then((e) => {
-  //       console.log("success", e);
-  //     })
-  //     .catch((e) => {
-  //       console.log(e);
-  //     });
-  // }
-
-
 
   const onChangeHandler = (e) => {
     const fileSize = (e.target.files[0].size / 1000) + "KB";

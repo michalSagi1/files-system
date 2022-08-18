@@ -3,7 +3,8 @@
     justify-content: center;
     height: 90px;
     /* background-color: rgb(255, 255, 255); */
-    background-color: rgb(255, 223, 97);
+    /* background-color: rgb(255, 239, 176); */
+    background-color: rgb(254 253 239);
 
     box-shadow:1px -2px 14px 0px black
 }
@@ -18,19 +19,24 @@
 display: flex;
 justify-content: space-between;
 align-items: center;
-width: 180px;
+width: 140px;
 
 }
 .headerLogo{
     height: 53px;
     object-fit: contain;
+    cursor: pointer;
 }
-.threeLines{
+.iconHeart{
     height: 23px;
     object-fit: contain;
 }
-.bookify{
+.titleHeader{
     font-weight: bold;
     font-size: 25px;
+    /* color: rgb(42, 12, 12); */
+   color:  #41464b;
+   font-family: 'Signika', sans-serif;
+    cursor: pointer;
 
 }

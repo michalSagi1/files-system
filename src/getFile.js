@@ -7,6 +7,15 @@ import PopupRenameFolder from './RenameFolder';
 import "./getFile.css";
 import iconDownload from './icons/download.png'
 import iconFolder from './icons/folder.png'
+import png from './icons/png.png'
+import jpg from './icons/jpg.png'
+import pdf from './icons/pdf.png'
+import word from './icons/word.png'
+import defualt from './icons/fileDef.png'
+
+
+
+
 import Popup from './popup';
 import CreatFile from './creatFile';
 
@@ -87,12 +96,19 @@ function GetFile({ change, setChange }) {
                 </div>
 
                 {files.map(v => {
+                    v.type = v.name.slice((v.name.lastIndexOf(".") + 1))
+
                     if (v.name.includes(".")) {
                         return (
                             <div className='files'>
-
                                 {/* <button onClick={() => setPath(`${path}/${v.name}`)}>{v.name}</button> */}
                                 <div className='fileCard'>
+                                    <img
+                                        src={v.type == "png" ? png : v.type == "pdf" ? pdf : v.type == "jpg" || v.type == "jpeg" ? jpg : v.type == "docx" ? word : defualt}
+                                        alt=""
+                                        className="iconFolder"
+                                    // onClick={() => download({ fileName: v.name })}
+                                    />
                                     <div className='fileName'>{v.name}   </div>
                                     <div className='icons'>
                                         <PopupDelFile fileName={v.name} setChange={setChange} ></PopupDelFile>
