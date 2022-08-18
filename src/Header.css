@@ -1,0 +1,36 @@
+.headerContainer{
+    display: flex;
+    justify-content: center;
+    height: 90px;
+    /* background-color: rgb(255, 255, 255); */
+    background-color: rgb(255, 223, 97);
+
+    box-shadow:1px -2px 14px 0px black
+}
+.headerInnerWidth{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.workshopHeader{
+display: flex;
+justify-content: space-between;
+align-items: center;
+width: 180px;
+
+}
+.headerLogo{
+    height: 53px;
+    object-fit: contain;
+}
+.threeLines{
+    height: 23px;
+    object-fit: contain;
+}
+.bookify{
+    font-weight: bold;
+    font-size: 25px;
+
+}

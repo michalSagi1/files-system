@@ -147,6 +147,13 @@ function Form({ setChange }) {
           </label>
         </div>
         {getFile &&
+          <div className='information'>
+            <b>File Name:</b> {file.fileName}<br />
+            {/* <b>File Size:</b> {file.size}<br />
+          <b>File Type:</b> {file.type} */}
+          </div>
+        }
+        {getFile &&
           <div className='up'>
 
             <button className='btnadd'>
@@ -156,13 +163,7 @@ function Form({ setChange }) {
         }
 
       </form>
-      {getFile &&
-        <div className='information'>
-          <b>File Name:</b> {file.fileName}<br />
-          <b>File Size:</b> {file.size}<br />
-          <b>File Type:</b> {file.type}
-        </div>
-      }
+
 
     </div>
 

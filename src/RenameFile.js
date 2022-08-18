@@ -1,5 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form"
+
 import React, { useContext, useState } from "react";
 
 import PathContext from "./PathContext";
@@ -57,15 +59,29 @@ const PopupRenameFile = ({ fileName, setChange }) => {
                 <Modal.Body>
                     enter new name:
                     <br />
-                    <form>
+
+
+                    <Form.Label htmlFor="inputnamefile"></Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Name file..."
+                        id="inputnamefile"
+                        aria-describedby="inputnamefile"
+                        value={newFileName}
+                        onChange={(e) => setNewFileName(e.target.value)}
+                    />
+                    <Form.Text id="inputnamefolder" muted>
+                        Must add "." and then the file type
+                    </Form.Text>
+                    {/* <form>
                         <input
                             className="button_add"
                             placeholder="Name file..."
                             value={newFileName}
                             onChange={(e) => setNewFileName(e.target.value)}
                         ></input>
-                    </form>
-                    Must add "." and then the file type
+                    </form> */}
+                    {/* Must add "." and then the file type */}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="button_add" variant="secondary" onClick={renameFile}>

@@ -6,7 +6,7 @@ import SowFolder from './showfolder';
 import GetFile from './getFile';
 import Path from './path';
 import PathContext from './PathContext'
-
+import Header from './Header'
 
 
 function Layout() {
@@ -16,6 +16,7 @@ function Layout() {
         <PathContext.Provider value={{ path, setPath }}>
 
             <>
+                <Header />
 
                 {/* <Popup setChange={setChange} /> */}
 
