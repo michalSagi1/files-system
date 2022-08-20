@@ -13,6 +13,8 @@ const PopupRenameFile = ({ fileName, setChange }) => {
     const { path, setPath } = useContext(PathContext);
     const [show, setShow] = useState(false);
     const [newFileName, setNewFileName] = useState("")
+    const [viewMessage, setViewMessage] = useState(false);
+
 
 
 
@@ -27,7 +29,7 @@ const PopupRenameFile = ({ fileName, setChange }) => {
             },
             body: JSON.stringify({
                 fileNameOld: fileName,
-                fileNameNew: newFileName,
+                fileNameNew: newFileName + fileName.slice((fileName.lastIndexOf("."))),
                 path
             }),
         };
@@ -36,9 +38,14 @@ const PopupRenameFile = ({ fileName, setChange }) => {
             requestOptions
         );
         // const data = await res.json();
-        setChange(newFileName);
-        handleClose();
-        console.log(fileName, newFileName, path);
+        console.log(res);
+        if (res.status === 200) {
+            handleClose();
+            setChange(newFileName);
+        } else {
+            setViewMessage(true)
+        }
+        console.log(fileName, newFileName + fileName.slice((fileName.lastIndexOf("."))), path);
     };
 
 
@@ -46,7 +53,6 @@ const PopupRenameFile = ({ fileName, setChange }) => {
         setShow(false);
     };
     const handleShow = () => setShow(true);
-
     return (
         <>
             <div className="rename" onClick={handleShow}>
@@ -68,10 +74,9 @@ const PopupRenameFile = ({ fileName, setChange }) => {
                         id="inputnamefile"
                         aria-describedby="inputnamefile"
                         value={newFileName}
-                        onChange={(e) => setNewFileName(e.target.value)}
+                        onChange={(e) => { setNewFileName(e.target.value); setViewMessage(false) }}
                     />
                     <Form.Text id="inputnamefolder" muted>
-                        Must add "." and then the file type
                     </Form.Text>
                     {/* <form>
                         <input
@@ -82,6 +87,8 @@ const PopupRenameFile = ({ fileName, setChange }) => {
                         ></input>
                     </form> */}
                     {/* Must add "." and then the file type */}
+                    {viewMessage && <div className="text-info">A file with this name already exists. Enter another name</div>}
+
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="button_add" variant="secondary" onClick={renameFile}>

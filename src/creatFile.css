@@ -6,7 +6,7 @@ cursor: pointer;
 color: blue;
   }
  .addFile{
-height: 120px;
+height: 110px;
 box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
 border-radius: 50%;
   }
@@ -30,7 +30,7 @@ border-radius: 50%;
         flex-direction: row-reverse;
         /* justify-content: center; */
         justify-content: flex-start;    
-        margin-right: 40px;
+        /* margin-right: 40px; */
     }
     /* .add{
         display: flex;
@@ -54,4 +54,7 @@ border-radius: 50%;
                 justify-content: center;
                 margin-top: 10px;
 
+    }
+    .errormessage{
+        color: red;
     }

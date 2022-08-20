@@ -73,6 +73,9 @@ function Form({ setChange }) {
   const [file, setFile] = useState({ fileName: "", size: "", type: "" });
   const { path } = useContext(PathContext);
   const [getFile, setGetFile] = useState(false)
+  const [error, setError] = useState(false)
+
+
 
 
   const onSubmit = async (e) => {
@@ -99,17 +102,23 @@ function Form({ setChange }) {
     })
       .then(function (response) {
         //handle success
-        console.log("success", response);
-        setChange(file.fileName)
+        if (response.status == 200) {
+          setGetFile(false)
+          console.log("success", response);
+          setChange(file.fileName)
+        }
 
       })
       .catch(function (response) {
+        setError(true)
+
         //handle error
         console.log(response);
       });
-    setGetFile(false)
 
   }
+
+
 
 
 
@@ -134,7 +143,7 @@ function Form({ setChange }) {
         <div className='add'>
           <label for="fileInput">
             <img src={iconFile} alt={iconFile} className="addFile" />
-            <input id="fileInput" type="file" onChange={onChangeHandler} />
+            <input id="fileInput" type="file" onChange={(e) => { onChangeHandler(e); setError(false) }} />
           </label>
         </div>
         {getFile &&
@@ -142,6 +151,9 @@ function Form({ setChange }) {
             <b>File Name:</b> {file.fileName}<br />
             {/* <b>File Size:</b> {file.size}<br />
           <b>File Type:</b> {file.type} */}
+            {error &&
+              <div className='errormessage'>this file alredy exists</div>
+            }
           </div>
         }
         {getFile &&
