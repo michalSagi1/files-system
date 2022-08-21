@@ -12,11 +12,11 @@ import jpg from './icons/jpg.png'
 import pdf from './icons/pdf.png'
 import word from './icons/word.png'
 import defualt from './icons/fileDef.png'
+import ItemNum from './itemNum';
 
 
 
-
-import Popup from './popup';
+import Popup from './popupCreateFolder';
 import CreatFile from './creatFile';
 
 function GetFile({ change, setChange }) {
@@ -29,21 +29,18 @@ function GetFile({ change, setChange }) {
         async function getFile() {
             const requestOptions = {
                 method: 'GET',
-                // body: JSON.stringify({
-                // path: "root/test",
 
-                // })
             };
             const url = `http://localhost:3000/folder/root/?path=${path}`
-            // const url = `http://localhost:3000/folder/getFile`
             const res = await fetch(url, requestOptions);
             const data = await res.json();
-            console.log(data);
+            // console.log(data);
             setFiles(data);
         }
         getFile()
-        console.log(files);
+        // console.log(files);
     }, [change, path])
+
 
     const download = async ({ fileName }) => {
         const requestOptions = {
@@ -101,13 +98,11 @@ function GetFile({ change, setChange }) {
                     if (v.name.includes(".")) {
                         return (
                             <div className='files'>
-                                {/* <button onClick={() => setPath(`${path}/${v.name}`)}>{v.name}</button> */}
                                 <div className='fileCard'>
                                     <img
                                         src={v.type == "png" ? png : v.type == "pdf" ? pdf : v.type == "jpg" || v.type == "jpeg" ? jpg : v.type == "docx" ? word : defualt}
                                         alt=""
                                         className="iconFolder"
-                                    // onClick={() => download({ fileName: v.name })}
                                     />
                                     <div className='fileName'>{v.name}   </div>
                                     <div className='icons'>
@@ -148,13 +143,12 @@ function GetFile({ change, setChange }) {
                                             src={iconFolder}
                                             alt=""
                                             className="iconFolder"
-                                        // onClick={() => download({ fileName: v.name })}
                                         />
                                         <div className='fileName'>{v.name}   </div>
 
-
-
-                                        {/* <button onClick={() => setPath(`${path}/${v.name}`)}>{v.name}</button> */}
+                                        <div className='itemNum'>
+                                            <ItemNum _path={`${path}/${v.name}`} setChange={setChange} change={change} />
+                                        </div>
                                     </div>
                                     <div className='iconsFolders'>
 

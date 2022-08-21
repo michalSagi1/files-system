@@ -93,7 +93,6 @@ function Form({ setChange }) {
         bodyFormData,
       // name: file.fileName,
       // size: file.size,
-      // type: file.type,
       // dir: "/test"
 
 

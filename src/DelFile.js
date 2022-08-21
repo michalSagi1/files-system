@@ -47,11 +47,11 @@ const PopupDelFile = ({ fileName, setChange }) => {
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete File</Modal.Title>
+                    <Modal.Title><div className="titlePopup">Delete File</div></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <br />
-                    Do you want delete the file {fileName} ?
+                    <div className="titlePopup">
+                        Do you want delete the file "{fileName}" ?</div>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button className="button_add" variant="secondary" onClick={delFile}>

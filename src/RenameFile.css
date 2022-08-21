@@ -1,0 +1,26 @@
+.titlePopup{
+    font-family: 'Signika', sans-serif;
+
+}
+
+.textInfo{
+    color: red;
+    font-size: 15px;
+    font-family: 'Signika', sans-serif;
+    margin-top: 16px;
+    line-height: 22px;
+
+
+}
+.textInfo2{
+    color: red;
+    font-size: 12px;
+    font-family: 'Signika', sans-serif;
+    line-height: 22px;
+
+}
+
+.btup{
+    background-color: white;
+    color: black;
+}

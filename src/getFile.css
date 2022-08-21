@@ -160,3 +160,9 @@
         flex-direction: column;
         align-items: center;
     }
+    .itemNum{
+        font-size: 10px;
+        font-family: 'Signika', sans-serif;
+        line-height: 4px;
+
+    }

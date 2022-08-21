@@ -56,15 +56,16 @@ const PopupDelFolder = ({ folderName, setChange }) => {
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete Folder</Modal.Title>
+                    <Modal.Title><div className="titlePopup">
+                        Delete Folder</div></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <br />
-                    Do you want delete the folder {folderName} ?
-                    <br />
-                    Note - only an empty folder can be deleted!
-                    <br />
-                    {viewMessage && <div className="text-info">The folder not empty</div>}
+                    <div className="titlePopup">
+
+                        Do you want delete the folder "{folderName}" ?</div>
+                    <div className="textInfo">
+                        Note - only an empty folder can be deleted!</div>
+                    {viewMessage && <div className="textInfo">📁 The folder not empty</div>}
 
                 </Modal.Body>
                 <Modal.Footer>

@@ -6,6 +6,7 @@ import React, { useContext, useState } from "react";
 
 import PathContext from "./PathContext";
 import iconEdit from './icons/edit.png'
+import './RenameFile.css'
 
 
 const PopupRenameFile = ({ fileName, setChange }) => {
@@ -27,6 +28,7 @@ const PopupRenameFile = ({ fileName, setChange }) => {
             headers: {
                 "Content-Type": "application/json",
             },
+
             body: JSON.stringify({
                 fileNameOld: fileName,
                 fileNameNew: newFileName + fileName.slice((fileName.lastIndexOf("."))),
@@ -37,7 +39,6 @@ const PopupRenameFile = ({ fileName, setChange }) => {
             `http://localhost:3000/file/root`,
             requestOptions
         );
-        // const data = await res.json();
         console.log(res);
         if (res.status === 200) {
             handleClose();
@@ -60,13 +61,11 @@ const PopupRenameFile = ({ fileName, setChange }) => {
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Rename File</Modal.Title>
+                    <Modal.Title><div className="titlePopup">Rename File</div></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    enter new name:
-                    <br />
-
-
+                    <div className="titlePopup">
+                        enter new name:</div>
                     <Form.Label htmlFor="inputnamefile"></Form.Label>
                     <Form.Control
                         type="text"
@@ -76,22 +75,21 @@ const PopupRenameFile = ({ fileName, setChange }) => {
                         value={newFileName}
                         onChange={(e) => { setNewFileName(e.target.value); setViewMessage(false) }}
                     />
+                    <br />
                     <Form.Text id="inputnamefolder" muted>
+                        ✏️ Enter letters and numbers only
+
                     </Form.Text>
-                    {/* <form>
-                        <input
-                            className="button_add"
-                            placeholder="Name file..."
-                            value={newFileName}
-                            onChange={(e) => setNewFileName(e.target.value)}
-                        ></input>
-                    </form> */}
-                    {/* Must add "." and then the file type */}
-                    {viewMessage && <div className="text-info">A file with this name already exists. Enter another name</div>}
+
+                    {viewMessage && <div className="textInfo">It is not possible to change the file name.<br />
+                        <div className="textInfo2">
+                            Check if file with this name already exists,
+                            and note that entered letters and numbers only</div>
+                    </div>}
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="button_add" variant="secondary" onClick={renameFile}>
+                    <Button className="button_add btup" variant="secondary" onClick={renameFile}>
                         update{" "}
                     </Button>
                     <Button variant="secondary" onClick={handleClose}>

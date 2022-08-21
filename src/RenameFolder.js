@@ -63,7 +63,8 @@ const PopupRenameFolder = ({ folderName, setChange }) => {
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Rename Folder</Modal.Title>
+                    <Modal.Title>
+                        <div className="titlePopup">Rename Folder</div></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Label htmlFor="inputnamefolder"></Form.Label>
@@ -75,26 +76,20 @@ const PopupRenameFolder = ({ folderName, setChange }) => {
                         value={newFolderName}
                         onChange={(e) => { setFolderName(e.target.value); setViewMessage(false) }}
                     />
-                    <Form.Text id="inputnamefolder" muted>
-                        Enter letters and numbers only
-                    </Form.Text>
-                    {/* enter new name:
                     <br />
-                    <form>
-                        <input
-                            className="button_add"
-                            placeholder="Name file..."
-                            value={newFileName}
-                            onChange={(e) => setNewFileName(e.target.value)}
-                        ></input>
-                    </form>
-                    Must add "." and then the file type */}
-                    {viewMessage && <div className="text-info">It is not possible to change the file name.
-                        Check if this folder already exists and enter only letters and numbers!</div>}
+                    <Form.Text id="inputnamefolder" muted>
+                        ✏️ Enter letters and numbers only
+                    </Form.Text>
+
+                    {viewMessage && <div className="textInfo">It is not possible to change the folder name.<br />
+                        <div className="textInfo2">
+                            Check if this folder already exists,
+                            and note that entered letters and numbers only</div>
+                    </div>}
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="button_add" variant="secondary" onClick={renameFolder}>
+                    <Button className="button_add btup" variant="secondary" onClick={renameFolder}>
                         update{" "}
                     </Button>
                     <Button variant="secondary" onClick={() => { handleClose(); setViewMessage(false) }}>
