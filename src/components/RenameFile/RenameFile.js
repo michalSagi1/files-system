@@ -7,6 +7,7 @@ import React, { useContext, useState } from "react";
 import PathContext from '../../PathContext';
 import iconEdit from '../../icons/edit.png'
 import './RenameFile.css'
+const axios = require('axios').default;
 
 
 const PopupRenameFile = ({ fileName, setChange }) => {
@@ -15,6 +16,7 @@ const PopupRenameFile = ({ fileName, setChange }) => {
     const [show, setShow] = useState(false);
     const [newFileName, setNewFileName] = useState("")
     const [viewMessage, setViewMessage] = useState(false);
+    const [message, setMessage] = useState("")
 
 
 
@@ -22,30 +24,66 @@ const PopupRenameFile = ({ fileName, setChange }) => {
 
     const renameFile = async () => {
         console.log(fileName);
-
-        const requestOptions = {
+        axios({
             method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            url: `http://localhost:3000/file/root`,
+            data:
+                JSON.stringify({
+                    fileNameOld: fileName,
+                    fileNameNew: newFileName + fileName.slice((fileName.lastIndexOf("."))),
+                    path
+                }),
 
-            body: JSON.stringify({
-                fileNameOld: fileName,
-                fileNameNew: newFileName + fileName.slice((fileName.lastIndexOf("."))),
-                path
-            }),
-        };
-        const res = await fetch(
-            `http://localhost:3000/file/root`,
-            requestOptions
-        );
-        console.log(res);
-        if (res.status === 200) {
-            handleClose();
-            setChange(newFileName);
-        } else {
-            setViewMessage(true)
-        }
+
+            headers: { "Content-Type": "application/json" },
+
+        })
+            .then(function (response) {
+                //handle success
+                if (response.status == 200) {
+                    handleClose();
+                    console.log("success", response);
+                    setChange(newFileName);
+                }
+
+            })
+            .catch(function (response) {
+                //   setError(true)
+                setViewMessage(true)
+                setMessage(response.response.data.message)
+                //handle error
+                console.log(response.response.data.message);
+            });
+
+
+
+
+
+
+
+        // const requestOptions = {
+        //     method: "PUT",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+
+        //     body: JSON.stringify({
+        //         fileNameOld: fileName,
+        //         fileNameNew: newFileName + fileName.slice((fileName.lastIndexOf("."))),
+        //         path
+        //     }),
+        // };
+        // const res = await fetch(
+        //     `http://localhost:3000/file/root`,
+        //     requestOptions
+        // );
+        // console.log(res);
+        // if (res.status === 200) {
+        //     handleClose();
+        //     setChange(newFileName);
+        // } else {
+        //     setViewMessage(true)
+        // }
         console.log(fileName, newFileName + fileName.slice((fileName.lastIndexOf("."))), path);
     };
 
@@ -81,10 +119,10 @@ const PopupRenameFile = ({ fileName, setChange }) => {
 
                     </Form.Text>
 
-                    {viewMessage && <div className="textInfo">It is not possible to change the file name.<br />
-                        <div className="textInfo2">
+                    {viewMessage && <div className="textInfo">{message}<br />
+                        {/* <div className="textInfo2">
                             Check if file with this name already exists,
-                            and note that entered letters and numbers only</div>
+                            and note that entered letters and numbers only</div> */}
                     </div>}
 
                 </Modal.Body>

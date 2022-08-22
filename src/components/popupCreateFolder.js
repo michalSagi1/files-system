@@ -13,7 +13,8 @@ const axios = require('axios').default;
 function Popup({ setChange }) {
 
     const [show, setShow] = useState(false);
-    const [message, setMessage] = useState(false);
+    const [viewMessage, setViewMessage] = useState(false);
+    const [message, setMessage] = useState("");
     const [nameFolder, setNameFolder] = useState("")
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -34,8 +35,9 @@ function Popup({ setChange }) {
 
             })
             .catch((e) => {
-                console.log(e);
-                setMessage(true)
+                console.log(e.response.data.message);
+                setViewMessage(true)
+                setMessage(e.response.data.message)
 
             });
 
@@ -67,15 +69,15 @@ function Popup({ setChange }) {
                             id="inputnamefolder"
                             aria-describedby="inputnamefolder"
                             value={nameFolder}
-                            onChange={(e) => { setMessage(false); setNameFolder(e.target.value) }}
+                            onChange={(e) => { setViewMessage(false); setNameFolder(e.target.value) }}
                         />
                         <br />
                         <Form.Text id="inputnamefolder" muted>
                             <div className='titlePopup'>
                                 ✏️  Enter letters and numbers only</div>
                         </Form.Text>
-                        {message &&
-                            <div className='textInfo'>error, please enter new name</div>}
+                        {viewMessage &&
+                            <div className='textInfo'>{message}</div>}
                     </>
 
 
