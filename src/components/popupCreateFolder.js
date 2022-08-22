@@ -3,8 +3,8 @@ import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 // import { AiFillFolderAdd } from 'react-icons/ai'
-import PathContext from './PathContext';
-import iconFolder from './icons/addFolder.png'
+import PathContext from '../PathContext';
+import iconFolder from '../icons/addFolder.png'
 
 const axios = require('axios').default;
 

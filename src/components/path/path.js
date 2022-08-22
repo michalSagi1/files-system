@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import PathContext from './PathContext';
-import iconNext from './icons/next.png'
+import PathContext from '../../PathContext';
+import iconNext from '../../icons/next.png'
 import './path.css'
 
 function Path() {

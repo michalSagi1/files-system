@@ -1,0 +1,332 @@
+.title{
+    font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    margin: 2%;
+    margin-left: 10%;
+    margin-top: 2%;
+    color:  #41464b;
+    font-family: 'Signika', sans-serif;
+
+}
+.containerFiles{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: center;
+    margin-left: 100px;
+    border-bottom: inset;
+    border-top: outset;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 87%;
+}
+
+.files{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 160px;
+    height: 150px;
+    margin: 10px;
+    padding: 7px;
+
+    display: flex;
+
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.containerFolders{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:flex-start;
+    align-items: center;
+    margin-left: 100px;
+    border-bottom: inset;
+    border-top: outset;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    width: 87%;
+}
+
+.folders{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    /* width: 208px;
+    height: 190px; */
+    width: 160px;
+    height: 150px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+}
+.fileCard{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.fileName{
+    font-size: 15px;
+    margin-bottom:15px;
+    /* margin-top: 15px; */
+        font-family: 'Signika', sans-serif;
+        max-height: 30px;
+        line-height: 13px;
+}
+
+
+.icons{
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+.download{
+  cursor: pointer;
+  height: 25px;
+  /* margin-right: 15px; */
+}
+.delete{
+    cursor: pointer;
+    height: 25px;
+    margin-right: 15px;
+  }
+  .edit{
+    cursor: pointer;
+    height: 25px;
+    margin-left: 15px;
+  }
+  .iconFolder{
+    height: 35px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+  .gotofolder{
+    cursor: pointer;
+    margin-bottom: -6px;
+    /* margin-top: 15px; */
+    /* margin-bottom: 4px; */
+  }
+  .iconsFolders{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-bottom: 13px;
+   }
+    
+    .creatFolder{
+        box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+        transition: 0.3s;
+        width: 110px;
+        height: 110px;
+        margin: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        border-radius: 50%;
+    }
+    
+    .addFolder{
+        height: 110px;
+    cursor: pointer;    }
+    .addfolder{
+        width: 160px;
+        height: 190px;
+        margin: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    /* .creatFile{ */
+        /* box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%); */
+    /* transition: 0.3s; */
+    /* width: 200px; */
+    /* height: 130px; */
+    /* margin: 10px; */
+    /* justify-content: center;
+    display: flex;
+    flex-direction: column; */
+    /* } */
+      .addfile{
+        width: 160px;
+        /* height: 190px; */
+        margin: 10px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .itemNum{
+        font-size: 10px;
+        font-family: 'Signika', sans-serif;
+        line-height: 4px;
+
+    }
+
+    @media screen and (max-width: 600px){
+        .title{
+            font-size: 15px;
+            font-weight: bold;
+            display: flex;
+            margin: 2%;
+            margin-left: 10%;
+            margin-top: 2%;
+            color:  #41464b;
+            font-family: 'Signika', sans-serif;
+        
+        }
+        .containerFiles{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:flex-start;
+            align-items: center;
+            margin-left: 40px;
+            border-bottom: inset;
+            border-top: outset;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            width: 87%;
+        }
+        
+        .files{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            width: 100px;
+            height: 90px;
+            margin: 6px;
+            padding: 7px;
+        
+            display: flex;
+        
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+        
+        .containerFolders{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:flex-start;
+            align-items: center;
+            margin-left: 40px;
+            border-bottom: inset;
+            border-top: outset;
+            padding-top: 12px;
+            padding-bottom: 12px;
+            width: 87%;
+        }
+        
+        .folders{
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            transition: 0.3s;
+            /* width: 208px;
+            height: 190px; */
+            width: 100px;
+            height: 90px;
+            margin: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+        
+        }
+        .fileCard{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .fileName{
+            font-size: 10px;
+            margin-bottom:10px;
+            /* margin-top: 15px; */
+                font-family: 'Signika', sans-serif;
+                max-height: 30px;
+                line-height: 13px;
+        }
+        
+        
+        .icons{
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 5px;
+            margin-top: 10px;
+        }
+        .download{
+          cursor: pointer;
+          height: 15px;
+          /* margin-right: 15px; */
+          margin-top: 6px;
+        }
+        .delete{
+            cursor: pointer;
+            height: 15px;
+            margin-right: 15px;
+          }
+          .edit{
+            cursor: pointer;
+            height: 15px;
+            margin-left: 15px;
+          }
+          .iconFolder{
+            height: 35px;
+            object-fit: contain;
+            margin-bottom: 10px;
+            display: none;
+          }
+          .gotofolder{
+            cursor: pointer;
+            margin-bottom: -6px;
+            /* margin-top: 15px; */
+            /* margin-bottom: 4px; */
+          }
+          .iconsFolders{
+            display: flex;
+            justify-content: space-evenly;
+            margin-top: 20px;
+            margin-bottom: 13px;
+           }
+            
+            .creatFolder{
+                box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+                transition: 0.3s;
+                width: 80px;
+                height: 80px;
+                margin: 10px;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                border-radius: 50%;
+            }
+            
+            .addFolder{
+                height: 80px;
+            cursor: pointer;    }
+            .addfolder{
+                width: 100px;
+                height: 90px;
+                margin: 6px;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+         
+              .addfile{
+                width: 100px;
+                /* height: 190px; */
+                margin: 6px;
+                justify-content: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .itemNum{
+                font-size: 8px;
+                font-family: 'Signika', sans-serif;
+                line-height: 4px;
+        
+            }
+    }

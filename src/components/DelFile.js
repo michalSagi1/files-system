@@ -1,9 +1,9 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import React, { useContext, useState } from "react";
-import iconDelete from './icons/delete.png'
+import iconDelete from '../icons/delete.png'
 
-import PathContext from "./PathContext";
+import PathContext from "../PathContext";
 
 const PopupDelFile = ({ fileName, setChange }) => {
     //   const { snackbarFunc } = useContext(SnackbarContext);

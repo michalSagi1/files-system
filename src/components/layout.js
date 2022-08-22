@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import GetFile from './getFile';
-import Path from './path';
-import PathContext from './PathContext'
-import Header from './Header'
+import GetFile from '../pages/getFile';
+import Path from './path/path';
+import PathContext from '../PathContext'
+import Header from './header/Header'
 
 
 function Layout() {
@@ -15,9 +15,7 @@ function Layout() {
             <>
                 <Header />
 
-                {/* <Popup setChange={setChange} /> */}
 
-                {/* <CreatFile setChange={setChange} /> */}
                 <Path />
 
                 <GetFile change={change} setChange={setChange} />

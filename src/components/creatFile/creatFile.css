@@ -60,3 +60,14 @@ border-radius: 50%;
     .errormessage{
         color: red;
     }
+
+    @media screen and (max-width: 600px){
+        .addFile{
+            height: 80px;
+            box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+            border-radius: 50%;
+              }
+              .upload{
+                height: 20px;
+            }
+            }

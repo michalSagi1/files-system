@@ -1,53 +1,52 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form"
+
 import React, { useContext, useState } from "react";
-import iconEdit from './icons/edit.png'
 
-import PathContext from "./PathContext";
+import PathContext from '../../PathContext';
+import iconEdit from '../../icons/edit.png'
+import './RenameFile.css'
 
-const PopupRenameFolder = ({ folderName, setChange }) => {
+
+const PopupRenameFile = ({ fileName, setChange }) => {
     //   const { snackbarFunc } = useContext(SnackbarContext);
     const { path, setPath } = useContext(PathContext);
     const [show, setShow] = useState(false);
-    const [newFolderName, setFolderName] = useState("")
+    const [newFileName, setNewFileName] = useState("")
     const [viewMessage, setViewMessage] = useState(false);
-    const [message, setMessage] = useState("")
 
 
 
 
-    const renameFolder = async () => {
-        console.log(folderName);
+
+    const renameFile = async () => {
+        console.log(fileName);
 
         const requestOptions = {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
+
             body: JSON.stringify({
-                folderNameOld: folderName,
-                folderNameNew: newFolderName,
+                fileNameOld: fileName,
+                fileNameNew: newFileName + fileName.slice((fileName.lastIndexOf("."))),
                 path
             }),
         };
         const res = await fetch(
-            `http://localhost:3000/folder/root`,
+            `http://localhost:3000/file/root`,
             requestOptions
         );
         console.log(res);
-        // const data = await res.json();
-        // console.log(data);
-        // setMessage(data.message)
-        setChange(newFolderName);
         if (res.status === 200) {
             handleClose();
-            // snackbarFunc("Song deleted");
-
+            setChange(newFileName);
         } else {
             setViewMessage(true)
         }
-        console.log(folderName, newFolderName, path);
+        console.log(fileName, newFileName + fileName.slice((fileName.lastIndexOf("."))), path);
     };
 
 
@@ -55,7 +54,6 @@ const PopupRenameFolder = ({ folderName, setChange }) => {
         setShow(false);
     };
     const handleShow = () => setShow(true);
-
     return (
         <>
             <div className="rename" onClick={handleShow}>
@@ -63,36 +61,38 @@ const PopupRenameFolder = ({ folderName, setChange }) => {
             </div>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>
-                        <div className="titlePopup">Rename Folder</div></Modal.Title>
+                    <Modal.Title><div className="titlePopup">Rename File</div></Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <Form.Label htmlFor="inputnamefolder"></Form.Label>
+                    <div className="titlePopup">
+                        enter new name:</div>
+                    <Form.Label htmlFor="inputnamefile"></Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder='Folder Name...'
-                        id="inputnamefolder"
-                        aria-describedby="inputnamefolder"
-                        value={newFolderName}
-                        onChange={(e) => { setFolderName(e.target.value); setViewMessage(false) }}
+                        placeholder="Name file..."
+                        id="inputnamefile"
+                        aria-describedby="inputnamefile"
+                        value={newFileName}
+                        onChange={(e) => { setNewFileName(e.target.value); setViewMessage(false) }}
                     />
                     <br />
                     <Form.Text id="inputnamefolder" muted>
                         ✏️ Enter letters and numbers only
+
                     </Form.Text>
 
-                    {viewMessage && <div className="textInfo">It is not possible to change the folder name.<br />
+                    {viewMessage && <div className="textInfo">It is not possible to change the file name.<br />
                         <div className="textInfo2">
-                            Check if this folder already exists,
+                            Check if file with this name already exists,
                             and note that entered letters and numbers only</div>
                     </div>}
 
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button className="button_add btup" variant="secondary" onClick={renameFolder}>
+                    <Button className="button_add btup" variant="secondary" onClick={renameFile}>
                         update{" "}
                     </Button>
-                    <Button variant="secondary" onClick={() => { handleClose(); setViewMessage(false) }}>
+                    <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
                 </Modal.Footer>
@@ -101,4 +101,4 @@ const PopupRenameFolder = ({ folderName, setChange }) => {
     );
 };
 
-export default PopupRenameFolder;
+export default PopupRenameFile;

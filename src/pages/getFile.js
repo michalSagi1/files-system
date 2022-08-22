@@ -1,23 +1,23 @@
 import React, { useEffect, useState, useContext } from 'react'
-import PathContext from './PathContext';
-import PopupDelFile from './DelFile';
-import PopupRenameFile from './RenameFile';
-import PopupDelFolder from './DelFolder';
-import PopupRenameFolder from './RenameFolder';
+import PathContext from '../PathContext';
+import PopupDelFile from '../components/DelFile';
+import PopupRenameFile from '../components/RenameFile/RenameFile';
+import PopupDelFolder from '../components/DelFolder';
+import PopupRenameFolder from '../components/RenameFolder';
 import "./getFile.css";
-import iconDownload from './icons/download.png'
-import iconFolder from './icons/folder.png'
-import png from './icons/png.png'
-import jpg from './icons/jpg.png'
-import pdf from './icons/pdf.png'
-import word from './icons/word.png'
-import defualt from './icons/fileDef.png'
-import ItemNum from './itemNum';
+import iconDownload from '../icons/download.png'
+import iconFolder from '../icons/folder.png'
+import png from '../icons/png.png'
+import jpg from '../icons/jpg.png'
+import pdf from '../icons/pdf.png'
+import word from '../icons/word.png'
+import defualt from '../icons/fileDef.png'
+import ItemNum from '../components/itemNum';
 
 
 
-import Popup from './popupCreateFolder';
-import CreatFile from './creatFile';
+import Popup from '../components/popupCreateFolder';
+import CreatFile from '../components/creatFile/creatFile';
 
 function GetFile({ change, setChange }) {
     const [files, setFiles] = useState([])

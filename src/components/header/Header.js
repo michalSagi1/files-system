@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import './Header.css';
-import iconFolder from './icons/folder.png'
-import iconHeart from './icons/heart.png'
-import PathContext from "./PathContext";
+import iconFolder from '../../icons/folder.png'
+import iconHeart from '../..//icons/heart.png'
+import PathContext from "../../PathContext";
 
 
 
